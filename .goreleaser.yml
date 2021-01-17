@@ -63,15 +63,4 @@ nfpms:
     formats:
     - deb
     - rpm
-snapcrafts:
-  - summary: The forgotten go tool that executes and caches binaries included in go.mod files
-    description: |
-      A quick and lazy solution to proxy HLS streams to external players (Chromecast, VLC) when
-      the stream itself has some odd authentications through either query parameters or HTTP headers,
-      which by some external players will ignore or not have access to. Proxy is initialized by copying
-      a successful request from your Browsers web developer tools, and passing to the application through stdin.
-    grade: stable
-    confinement: strict
-    publish: true
-    license: MIT
 

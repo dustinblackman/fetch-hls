@@ -20,12 +20,6 @@ Using Apple's HLS examples:
 brew install dustinblackman/tap/fetch-hls
 ```
 
-**snapcraft** (Linux):
-
-```sh
-$ sudo snap install fetch-hls
-```
-
 **scoop** (Windows):
 
 ```sh
