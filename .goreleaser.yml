@@ -1,0 +1,77 @@
+project_name: fetch-hls
+builds:
+- env:
+  - CGO_ENABLED=0
+  goos:
+    - linux
+    - darwin
+    - windows
+    - freebsd
+    - netbsd
+    - openbsd
+    - dragonfly
+  goarch:
+    - 386
+    - amd64
+    - arm
+    - arm64
+  ignore:
+    - goos: darwin
+      goarch: 386
+    - goos: openbsd
+      goarch: arm
+      goarm: 6
+checksum:
+  name_template: 'checksums.txt'
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
+archives:
+  - format_overrides:
+    - goos: windows
+      format: zip
+signs:
+  - artifacts: checksum
+    args: ["-u", "6A34CFEE77FE8257C3BB92FE24C3FC5D6987904B", "--output", "${signature}", "--detach-sign", "${artifact}"]
+brews:
+  - tap:
+      owner: dustinblackman
+      name: homebrew-tap
+    folder: Formula
+    homepage: https://github.com/dustinblackman/fetch-hls
+    description: A quick and lazy solution to proxy HLS streams to external players (Chromecast, VLC).
+    test: |
+      system "#{bin}/fetch-hls --version"
+scoop:
+  bucket:
+    owner: dustinblackman
+    name: scoop-bucket
+  homepage: https://github.com/dustinblackman/fetch-hls
+  description: A quick and lazy solution to proxy HLS streams to external players (Chromecast, VLC).
+  license: MIT
+nfpms:
+  - homepage:  https://github.com/dustinblackman/fetch-hls
+    description: A quick and lazy solution to proxy HLS streams to external players (Chromecast, VLC).
+    maintainer: Dustin Blackman
+    license: MIT
+    vendor: Dustin Blackman
+    formats:
+    - deb
+    - rpm
+snapcrafts:
+  - summary: The forgotten go tool that executes and caches binaries included in go.mod files
+    description: |
+      A quick and lazy solution to proxy HLS streams to external players (Chromecast, VLC) when
+      the stream itself has some odd authentications through either query parameters or HTTP headers,
+      which by some external players will ignore or not have access to. Proxy is initialized by copying
+      a successful request from your Browsers web developer tools, and passing to the application through stdin.
+    grade: stable
+    confinement: strict
+    publish: true
+    license: MIT
+

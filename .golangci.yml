@@ -1,0 +1,89 @@
+linters-settings:
+  depguard:
+    list-type: blacklist
+  dupl:
+    threshold: 100
+  funlen:
+    lines: 300
+    statements: 50
+  goconst:
+    min-len: 4
+    min-occurrences: 5
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - experimental
+      - opinionated
+      - performance
+      - style
+    disabled-checks:
+      - dupImport # https://github.com/go-critic/go-critic/issues/845
+      - ifElseChain
+  gocyclo:
+    min-complexity: 30
+  goimports:
+    local-prefixes: gitlab.com/dustinblackman/nhl
+  golint:
+    min-confidence: 0
+  govet:
+    check-shadowing: true
+  lll:
+    line-length: 300
+  maligned:
+    suggest-new: true
+  misspell:
+    locale: US
+
+issues:
+  exclude-use-default: false
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - dupl
+    - text: "(G204|G304|G302|G402):"
+      linters:
+      - gosec
+
+linters:
+  disable-all: true
+  enable:
+    - bodyclose
+    - deadcode
+    - depguard
+    - dogsled
+    - dupl
+    - errcheck
+    - funlen
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - golint
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - interfacer
+    - lll
+    - maligned
+    - misspell
+    - nakedret
+    - rowserrcheck
+    - scopelint
+    - staticcheck
+    - structcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+    - whitespace
+
+run:
+  skip-files:
+    - "generated*.go"
+
