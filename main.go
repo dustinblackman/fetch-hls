@@ -107,6 +107,7 @@ func run(rootCmd *cobra.Command, args []string) {
 
 	var fetch Fetch
 	fetchStr := string(stdinBytes)
+	Log.Debug(fetchStr)
 	err = json.Unmarshal([]byte(fetchStr[strings.Index(fetchStr, "{"):strings.LastIndex(fetchStr, "}")+1]), &fetch)
 	if err != nil {
 		Log.Fatal(err)
