@@ -22,7 +22,7 @@ linters-settings:
   gocyclo:
     min-complexity: 30
   goimports:
-    local-prefixes: gitlab.com/dustinblackman/nhl
+    local-prefixes: gitlab.com/dustinblackman/fetch-hls
   golint:
     min-confidence: 0
   govet:
