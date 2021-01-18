@@ -1,0 +1,43 @@
+name: Test
+jobs:
+  test:
+    strategy:
+      matrix:
+        go-version: [1.15.x]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Install Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go-version }}
+
+    - name: Setup env
+      run: |
+        echo "GOPATH=$(go env GOPATH)" >> $GITHUB_ENV
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install gomodrun
+      shell: bash
+      run: |
+        curl -L "https://github.com/dustinblackman/gomodrun/releases/download/v0.4.1/gomodrun_0.4.1_linux_amd64.tar.gz" | tar -zxvf - -C $GOPATH/bin/ gomodrun
+
+    - uses: actions/cache@v2
+      with:
+        path: |
+          .gomodrun/
+          ~/go/pkg/mod
+        key: ${{ runner.os }}-fetch-hls-${{ hashFiles('./go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-fetch-hls-
+
+    - name: go mod download
+      run: |
+        go mod download
+        gomodrun --tidy
+
+    - name: Lint
+      run: make lint
