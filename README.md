@@ -1,5 +1,9 @@
 # fetch-hls
 
+[![Build Status](https://img.shields.io/github/workflow/status/dustinblackman/fetch-hls/Test?branch=master)](https://github.com/dustinblackman/fetch-hls/actions)
+[![Release](https://img.shields.io/github/v/release/dustinblackman/fetch-hls)](https://github.com/dustinblackman/fetch-hls/releases)
+[![Go Report Card](http://goreportcard.com/badge/dustinblackman/fetch-hls)](http://goreportcard.com/report/dustinblackman/fetch-hls)
+
 A *quick and lazy* solution to proxy HLS streams to external players (Chromecast, VLC) when the stream itself has some odd authentications through either query parameters or HTTP headers, which by some external players will ignore or not have access to. Proxy is initialized by copying a successful request from your Browsers web developer tools, and passing to the application through stdin.
 
 ## Example
