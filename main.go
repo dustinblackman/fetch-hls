@@ -131,6 +131,7 @@ func run(rootCmd *cobra.Command, args []string) {
 
 	e := echo.New()
 	e.HideBanner = true
+	e.HidePort = true
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORS())
