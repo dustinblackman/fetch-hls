@@ -119,6 +119,10 @@ func run(rootCmd *cobra.Command, args []string) {
 
 	localStreamURL := "http://" + viper.GetString("ip") + ":" + viper.GetString("port") + m3u8URL.Path
 	streamHost := m3u8URL.Scheme + "://" + m3u8URL.Hostname()
+	if m3u8URL.Port() != "80" && m3u8URL.Port() != "443" {
+		streamHost += ":" + m3u8URL.Port()
+	}
+
 	playlistPath := m3u8URL.Path
 	if m3u8URL.RawQuery != "" {
 		playlistPath += "?" + m3u8URL.RawQuery
@@ -132,7 +136,7 @@ func run(rootCmd *cobra.Command, args []string) {
 	e.Pre(middleware.RemoveTrailingSlash())
 
 	e.GET("/", func(c echo.Context) error {
-		return c.HTML(200, "Up")
+		return c.String(200, "Up")
 	})
 
 	e.GET(m3u8URL.Path, func(c echo.Context) error {
