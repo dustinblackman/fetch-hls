@@ -172,7 +172,7 @@ func main() {
 		Example: `  pbpaste | fetch-hls
   cat fetch.js | fetch-hls --player chromecast`,
 		Run:   run,
-		Short: "HLS proxy that extracts m3u8 playlist context from Google/Firefox's web dev tools 'Get as Fetch' function on an m3u8 request, guaranteeing all request information provided in browser to allow the request to succeed will be accessible from external devices like a Chromecast.",
+		Short: "A quick and lazy solution to proxy HLS streams to external players (Chromecast, VLC) when the stream itself has some odd authentications through either query parameters or HTTP headers, which by some external players will ignore or not have access to.",
 	}
 
 	flags := rootCmd.PersistentFlags()
