@@ -63,4 +63,5 @@ nfpms:
     formats:
     - deb
     - rpm
+    - apk
 

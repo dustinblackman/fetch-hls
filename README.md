@@ -31,10 +31,10 @@ $ scoop bucket add dustinblackman https://github.com/dustinblackman/scoop-bucket
 $ scoop install fetch-hls
 ```
 
-**deb/rpm** (Linux):
+**deb/rpm/apk** (Linux):
 
-Download the `.deb` or `.rpm` from the [releases page](https://github.com/dustinblackman/fetch-hls/releases) and
-install with `dpkg -i` and `rpm -i` respectively.
+Download the `.deb`, `.rpm` or `.apk` from the [releases page](https://github.com/dustinblackman/fetch-hls/releases) and
+install with `dpkg -i`, `rpm -i`, or `apk add --allow-untrusted` respectively.
 
 
 **manually**:
