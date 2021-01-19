@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"net"
 	"net/http"
 	"net/url"
 	"os"
@@ -33,18 +32,6 @@ type Fetch struct {
 	Method      string `json:"method"`
 	Mode        string `json:"mode"`
 	Headers     map[string]string
-}
-
-func getLocalIP() string {
-	conn, err := net.Dial("udp", "8.8.8.8:80")
-	if err != nil {
-		panic(err)
-	}
-	//nolint
-	defer conn.Close()
-
-	localAddr := conn.LocalAddr().(*net.UDPAddr)
-	return localAddr.IP.String()
 }
 
 func proxyRequest(reqURL string, fetch *Fetch, c echo.Context) error {
