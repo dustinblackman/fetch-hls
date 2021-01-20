@@ -64,6 +64,3 @@ nfpms:
     - deb
     - rpm
     - apk
-publishers:
-  - name: nur
-    command: .github/nur.sh {{ .Version }} {{ abs .ArtifactPath }}
