@@ -36,6 +36,11 @@ $ scoop install fetch-hls
 Download the `.deb`, `.rpm` or `.apk` from the [releases page](https://github.com/dustinblackman/fetch-hls/releases) and
 install with `dpkg -i`, `rpm -i`, or `apk add --allow-untrusted` respectively.
 
+**nix** (Linux):
+
+```sh
+nix-env -f '<nixpkgs>' -iA nur.repos.dustinblackman.fetch-hls
+```
 
 **manually**:
 
